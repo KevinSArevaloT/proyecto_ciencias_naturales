@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Calculadora MRU y MRUA</title>
+</head>
+
+<body>
+
+<h2>Calculadora de Movimiento</h2>
+
+<button onclick="iniciar()">Iniciar cálculo</button>
+
+<p id="resultado"></p>
+
+<script>
+
+function iniciar() {
+
+    let tipo = prompt("¿Qué deseas calcular?\n1 = MRU(movimiento rectilíneo uniforme)\n2 = MRUA(movimiento rectilíneo uniformemente acelerado)");
+
+    if(tipo == "1"){
+        calcularMRU();
+    }
+    else if(tipo == "2"){
+        calcularMRUA();
+    }
+    else{
+        alert("Opción inválida");
+    }
+}
+
+function calcularMRU(){
+
+    let opcion = prompt(
+        "MRU\n¿Que deseas calcular?\n" +
+        "1 = Velocidad\n" +
+        "2 = Distancia\n" +
+        "3 = Tiempo"
+    );
+
+    let resultado;
+
+    if(opcion == "1"){
+        let d = parseFloat(prompt("Ingrese distancia (m)"));
+        let t = parseFloat(prompt("Ingrese tiempo (s)"));
+
+        resultado = d / t;
+        document.getElementById("resultado").innerHTML =
+        "Velocidad = " + resultado + " m/s";
+    }
+
+    else if(opcion == "2"){
+        let v = parseFloat(prompt("Ingrese velocidad (m/s)"));
+        let t = parseFloat(prompt("Ingrese tiempo (s)"));
+
+        resultado = v * t;
+        document.getElementById("resultado").innerHTML =
+        "Distancia = " + resultado + " m";
+    }
+
+    else if(opcion == "3"){
+        let d = parseFloat(prompt("Ingrese distancia (m)"));
+        let v = parseFloat(prompt("Ingrese velocidad (m/s)"));
+
+        resultado = d / v;
+        document.getElementById("resultado").innerHTML =
+        "Tiempo = " + resultado + " s";
+    }
+
+    else{
+        alert("Opción inválida");
+    }
+
+}
+
+function calcularMRUA(){
+
+    let opcion = prompt(
+        "MRUA\n¿Que deseas calcular?\n" +
+        "1 = Velocidad Final\n" +
+        "2 = Distancia\n" +
+        "3 = Tiempo"
+    );
+
+    let resultado;
+
+    if(opcion == "1"){
+        let vi = parseFloat(prompt("Ingrese velocidad inicial(m/s)"));
+        let a = parseFloat(prompt("Ingrese aceleración(m/s²)"));
+        let t = parseFloat(prompt("Ingrese tiempo(s)"));
+
+        resultado = vi + (a * t);
+
+        document.getElementById("resultado").innerHTML =
+        "Velocidad Final = " + resultado + " m/s";
+    }
+
+    else if(opcion == "2"){
+        let vi = parseFloat(prompt("Ingrese velocidad inicial(m/s)"));
+        let t = parseFloat(prompt("Ingrese tiempo(s)"));
+        let a = parseFloat(prompt("Ingrese aceleración(m/s²)"));
+
+        resultado = (vi * t) + (0.5 * a * t * t);
+
+        document.getElementById("resultado").innerHTML =
+        "Distancia = " + resultado + " m";
+    }
+
+    else if(opcion == "3"){
+        let vf = parseFloat(prompt("Ingrese velocidad final(m/s)"));
+        let vi = parseFloat(prompt("Ingrese velocidad inicial(m/s)"));
+        let a = parseFloat(prompt("Ingrese aceleración(m/s²)"));
+
+        resultado = (vf - vi) / a;
+
+        document.getElementById("resultado").innerHTML =
+        "Tiempo = " + resultado + " s";
+    }
+
+    else{
+        alert("Opción inválida");
+    }
+
+}
+
+</script>
+
+</body>
+</html>
